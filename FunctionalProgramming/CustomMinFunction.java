@@ -1,23 +1,24 @@
 package FunctionalProgramming;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class CustomMinFunction {
 
     public static void main(String[] args) {
-        String [] num = new Scanner(System.in).nextLine().split(" ");
 
-       int [] nums = new int [num.length];
-       
-       for(int i = 0 ; i < nums.length;i++){
-           nums[i] = Integer.parseInt(num[i]);
-       }
+        Scanner scan = new Scanner(System.in);
 
-        Function<int[], Object> findMin = arr -> Arrays.stream(arr).min().getAsInt();
+        List<Integer> nums = Arrays.stream(scan.nextLine().split("\\s+")).map(Integer::parseInt).collect(Collectors.toList());
 
-        System.out.println(findMin.apply(nums));
+        Function<List<Integer> , Integer> getMin = Collections::min;
+
+
+        System.out.println(getMin.apply(nums));
 
 
 
